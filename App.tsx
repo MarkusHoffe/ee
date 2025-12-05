@@ -1,0 +1,1 @@
+import React from "react";import HomeScreen from "./src/screens/HomeScreen";export default function App(){return(<div className="w-full min-h-screen bg-gray-50"><HomeScreen/></div>);}

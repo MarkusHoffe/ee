@@ -1,0 +1,1 @@
+export default function HomeScreen(){return(<div className="p-10 text-center"><h1 className="text-3xl font-bold mb-4">Welcome to My Web App</h1><p className="text-gray-700">Everything works now in the browser.</p></div>);}
