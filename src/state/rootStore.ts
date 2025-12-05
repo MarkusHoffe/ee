@@ -1,1 +1,26 @@
-import { create } from "zustand";import { persist } from "zustand/middleware";interface RootStore{someData:number;addSomeData:()=>void;}const useRootStore=create<RootStore>()(persist((set,get)=>({someData:0,addSomeData:()=>set({someData:get().someData+1})}),{name:"root-storage",storage:{getItem:(k)=>Promise.resolve(localStorage.getItem(k)),setItem:(k,v)=>Promise.resolve(localStorage.setItem(k,v)),removeItem:(k)=>Promise.resolve(localStorage.removeItem(k))}}));export default useRootStore;
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+
+interface RootStore {
+  someData: number;
+  addSomeData: () => void;
+}
+
+const useRootStore = create<RootStore>()(
+  persist(
+    (set, get) => ({
+      someData: 0,
+      addSomeData: () => set({ someData: get().someData + 1 }),
+    }),
+    {
+      name: "root-storage",
+      storage: {
+        getItem: (key) => Promise.resolve(localStorage.getItem(key)),
+        setItem: (key, value) => Promise.resolve(localStorage.setItem(key, value)),
+        removeItem: (key) => Promise.resolve(localStorage.removeItem(key)),
+      },
+    }
+  )
+);
+
+export default useRootStore;
